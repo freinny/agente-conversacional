@@ -1,0 +1,293 @@
+🧪 Listing Dataverse MCP Tools with Full Detail...
+🔑 Token acquired successfully. Starts with: eyJ0eXAiOi...
+🛠️ Tools Detail:
+{
+  "tools": [
+    {
+      "name": "list_tables",
+      "description": "This tool gets a list of all tables in the dataverse and return an array of table names. This doesn't retrieve the tables from external sources.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "describe_table",
+      "description": "Get the TSQL schema definition of a table in the Dataverse database",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tablename": {
+            "type": "string",
+            "description": "Logical name (schema name) of the existing table to describe. Use list_tables to find the logical (schema) name of custom tables with default prefix like crb69_tablename."
+          }
+        },
+        "required": [
+          "tablename"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "read_query",
+      "description": "Dataverse SQL supports only basic SELECT queries with an explicit list of selected fields. \nIf aggregates are used, do not mix aggregated and non-aggregated columns in the SELECT list without a GROUP BY clause. \nIf a query requires comparing to an aggregate (for example, > AVG), do not use subqueries. \nInstead, split the logic into two queries: one to compute the aggregate and another to filter using literal values.\nGETDATE() and GETUTCDATE() functions are supported in predicates but not in the SELECT list.\nThe following features are allowed:\n\nTOP (without OFFSET). Example: SELECT TOP 20 col1 FROM table1\nSimple column-to-literal, column-to-column and column-to-date value function WHERE filters. Example: SELECT age FROM table1 WHERE age > 10 and haircolor=eyecolor or hiredate<GETUTCDATE()\nORDER BY. Example: SELECT col1, age FROM table1 ORDER BY age\nGROUP BY. Only the following aggregates are supported: COUNT, SUM, AVG, MIN, MAX. Example: SELECT col1, COUNT(col2) AS player_count FROM table1 GROUP BY col1.\nJOINs. Example: SELECT table1.col1, table1.col2, table2.col1 FROM table1 JOIN table2 ON table1.col1 = table2.col1\n\nThe following features are NOT supported:\n\nSubqueries are not allowed in SELECT, WHERE, or FROM clauses.\nHAVING. Example: SELECT col1,COUNT(id) AS player_count FROM table1 GROUP BY col1 HAVING COUNT(id) >= 3\nDISTINCT in select lists. Example: SELECT DISTINCT col1 from table1\nSubqueries (in SELECT, WHERE, FROM). Example: SELECT col1, col2 FROM table1 WHERE col1 IN (SELECT col3 FROM table2)\nWITH keyword. Example: WITH Sales AS (WITH Sales SELECT CxId, SUM(Amt) AS Exp FROM Orders GROUP BY CxId ) SELECT CxId, Exp FROM Sales\nOFFSET keyword. Example: SELECT Id, col1 FROM table1 ORDER BY Id OFFSET\nUNION keyword. Example: SELECT col1, col2 FROM table1 WHERE col3 = 'Sales' UNION SELECT col1, col2 FROM table1 WHERE col3 = 'Marketing'\nCAST keyword. Example: SELECT CAST('123' AS INT) AS ValueInt\nCONVERT keyword. Example: SELECT CONVERT(DATE, OrderDate) AS OrderDateOnly, CONVERT(DECIMAL(10,2), Amt) AS Amount FROM Orders\nCASE keyword. Example: SELECT Id, col1, col2, CASE WHEN Sal >= 100 THEN 'High' WHEN Sal >= 500 THEN 'Medium' ELSE 'Low' END AS SalCat FROM table1\nIF-ELSE keyword. Example: SELECT Id, col1, col2, CASE WHEN Sal > 100 THEN 'High' ELSE 'Low' END AS SalCat FROM table1\nAdvanced functions like: ROUND keyword. Example: SELECT PName, ROUND(Price, 2) AS RoundedPrice FROM table1\nDATE functions. Example: DATEDIFF(), DATEADD(), DATE()\nComplex conditions or unsupported aggregate argument types\nJOINs on aggregates. Example: SELECT c.CxId, c.CxName, s.Exp FROM Cxs c JOIN (SELECT CxId, SUM(Amt) AS Exp FROM Orders GROUP BY CxId) AS s ON c.CxId = s.CxId WHERE s.Exp > 100",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "querytext": {
+            "type": "string",
+            "description": "The SELECT SQL query to execute. Use list_tables tool to identify the logical table name. Then, use describe_table tool to find the logical names of the attributes along with their supported data types. Ensure that any SQL query you construct follows proper syntax and strictly adheres to the correct data types for each attribute."
+          }
+        },
+        "required": [
+          "querytext"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "create_table",
+      "description": "Create a new table in Dataverse with the specified columns",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tablename": {
+            "type": "string",
+            "description": "Logical name (schema name) of the new Dataverse table. DO NOT include table prefixes, just the table name"
+          },
+          "displayname": {
+            "type": "string",
+            "description": "Display name for the new table"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description for the new table"
+          },
+          "item": {
+            "type": "string",
+            "description": "JSON array of columns without prefixes, e.g. '[{\"name\":\"First Name\",\"type\":\"String\",\"required\":true, \"relatedtable\":\"target entity logical name (schema name)\", \"choices\":[{\"label\":\"choice name\",\"value\":100000000}]}]'. Valid types are choice, multiselect, customer, multiline text, duration, time zone, language, phone, email, url, lookup, money, string, integer, decimal, boolean, datetime, double, text area, ticker symbol, rich text, file, image."
+          }
+        },
+        "required": [
+          "tablename",
+          "displayname",
+          "item"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "update_table",
+      "description": "Update an existing table in Dataverse by adding new columns",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tablename": {
+            "type": "string",
+            "description": "Logical name (schema name) of the existing table to update. Use list_tables to find the logical (schema) name of custom tables with default prefix like crb69_tablename."
+          },
+          "item": {
+            "type": "string",
+            "description": "JSON array of columns to add, without prefixes, e.g. '[{\"name\":\"New Column\",\"type\":\"String\",\"required\":true}]'. Valid types are choice, multiselect, customer, multiline text, duration, time zone, language, phone, email, url, lookup, money, string, integer, decimal, boolean, datetime, double, text area, ticker symbol, rich text, file, image."
+          },
+          "newDisplayName": {
+            "type": "string",
+            "description": "New display name for the table. If not provided, the display name will not be changed."
+          },
+          "description": {
+            "type": "string",
+            "description": "Update Description for the table. If not provided, the description will not be changed."
+          }
+        },
+        "required": [
+          "tablename",
+          "item"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "delete_table",
+      "description": "Proceed solely on explicit user consent then only DELETE a table in the Dataverse database",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tablename": {
+            "type": "string",
+            "description": "Logical name (schema name) of the table to delete. Use list_tables to find the logical (schema) name of custom tables with default prefix like crb69_tablename."
+          },
+          "hasUserApproved": {
+            "type": "boolean",
+            "description": "Set this to true only after asking the user if they are ok with the deletion and you have received an affirmative response"
+          }
+        },
+        "required": [
+          "tablename",
+          "hasUserApproved"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "create_record",
+      "description": "INSERT a row into a table in the Dataverse database and returns the GUID ID of the created record",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tablename": {
+            "type": "string",
+            "description": "The logical (schema) name of table to insert into. Use list_tables to find the logical name of custom tables with default prefix like crb69_tablename"
+          },
+          "item": {
+            "type": "string",
+            "description": "Row properties as JSON object (e.g., '{\"crb69_username\":\"John\",\"crb69_email\":\"john@example.com\", \"crb69_colors\":\"100000002,100000004\", \"crb69_accountId\":{\"relatedTable\":\"account\",\"name\":\"Contoso Ltd\",\"recordId\":\"6D52BA41-0C1C-4B6F-91EF-731E78D3D34B\"}}}'). Use describe_table to get correct column names for custom tables with prefix. For system tables/default dataverse tables no prefix is needed like account."
+          }
+        },
+        "required": [
+          "tablename",
+          "item"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "update_record",
+      "description": "UPDATE a row into a table in the Dataverse database",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tablename": {
+            "type": "string",
+            "description": "The logical name (schema name) of the table to update a record in. Use list_tables to find the logical name of custom tables with default prefix like crb69_tablename."
+          },
+          "recordId": {
+            "type": "string",
+            "description": "The GUID of the record id"
+          },
+          "item": {
+            "type": "string",
+            "description": "Properties to update as JSON object (e.g., '{\"crb69_username\":\"John\",\"crb69_email\":\"john@example.com\",\"crb69_colors\":\"100000002,100000004\", \"crb69_accountId\":{\"relatedTable\":\"account\",\"name\":\"Contoso Ltd\",\"recordId\":\"6D52BA41-0C1C-4B6F-91EF-731E78D3D34B\"}}')."
+          }
+        },
+        "required": [
+          "tablename",
+          "recordId",
+          "item"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "delete_record",
+      "description": "Proceed solely on explicit user consent then only DELETE a row from a table in the Dataverse database",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tablename": {
+            "type": "string",
+            "description": "The logical name (schema name) of the table to delete a record from. Use list_tables to find the logical (schema) name of custom tables with default prefix like crb69_tablename."
+          },
+          "hasUserApproved": {
+            "type": "boolean",
+            "description": "Set this to true only after asking the user if they are ok with the deltion and you have received an affirmative response"
+          },
+          "recordId": {
+            "type": "string",
+            "description": "The GUID of the record id"
+          }
+        },
+        "required": [
+          "tablename",
+          "hasUserApproved",
+          "recordId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "list_prompts",
+      "description": "List prompts available to execute. When executing a prompt use the tool execute_prompt where the userQuery input needs to be a JSON with the structure of the inputs attribute of the selected prompt.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "execute_prompt",
+      "description": "Executes a prompt from the list of available prompts",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The AiModelId GUID of the prompt to execute. For a list of prompts available call the tool list_prompts and select the right prompt based on the userQuery."
+          },
+          "params": {
+            "type": "string",
+            "description": "A JSON string with the parameters to execute the prompt. The structure of this JSON is defined in the InputSchema attribute of the selected prompt."
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "search",
+      "description": "This tool is used to search over structured and unstructured Dataverse data and utilizes user and domain understanding to improve the relevance of search matches. This tool can generate and run SQL queries, run semantic search, and run vector search.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "querytext": {
+            "type": "string",
+            "description": "The search query. Must be a natural language question, not just keywords."
+          },
+          "appUniqueName": {
+            "type": "string",
+            "description": "The AppUniqueName. Use list_apps to get valid app unique names."
+          }
+        },
+        "required": [
+          "querytext",
+          "appUniqueName"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "fetch",
+      "description": "Retrieve full contents of a record in dataverse given its entity name and id.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the search document given as the name of the entity and the id separated by a forward slash"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+[
+    {
+        "id": "faq_1",
+        "source": "FAQ y Políticas de Pago v3",
+        "section": "Preguntas frecuentes",
+        "content": "¿Cuándo se considera una factura 'recibida'? Cuando la factura es enviada por el canal oficial y cumple requisitos fiscales y documentales. Si falta evidencia o referencia de OC, la factura se considera incompleta y no inicia el conteo de pago."
+    },
+    {
+        "id": "faq_2",
+        "source": "FAQ y Políticas de Pago v3",
+        "section": "Preguntas frecuentes",
+        "content": "¿Qué significa 'validación contable'? Revisión de montos, impuestos, centros de costo, cumplimiento de OC/contrato y evidencia de entrega."
+    },
+    {
+        "id": "faq_3",
+        "source": "FAQ y Políticas de Pago v3",
+        "section": "Preguntas frecuentes",
+        "content": "¿Cuáles son los plazos estándar de pago? Dependiendo del acuerdo: 7, 15 o 30 días naturales posteriores a la recepción correcta. Algunos contratos pueden manejar 45 o 60 días."
+    },
+    {
+        "id": "faq_4",
+        "source": "FAQ y Políticas de Pago v3",
+        "section": "Preguntas frecuentes",
+        "content": "¿Puedo solicitar pago urgente? Sí, pero requiere aprobación explícita del área solicitante y validación de Tesorería. Se aplica únicamente para casos críticos y documentados."
+    },
+    {
+        "id": "faq_5",
+        "source": "FAQ y Políticas de Pago v3",
+        "section": "Preguntas frecuentes",
+        "content": "¿Qué pasa si mi factura no tiene OC? Será rechazada automáticamente. Debe gestionarse previamente la OC o el contrato firmado antes de facturar."
+    },
+    {
+        "id": "faq_6",
+        "source": "FAQ y Políticas de Pago v3",
+        "section": "SLA Sugerido",
+        "content": "Tiempos de respuesta sugeridos: Estatus de factura (24-48h), Factura rechazada (48-72h), Actualización de datos bancarios (3-5 días), Pago urgente (24h)."
+    },
+    {
+        "id": "faq_7",
+        "source": "FAQ y Políticas de Pago v3",
+        "section": "Penalizaciones",
+        "content": "Política de penalizaciones: Retención de garantía (5%), retraso en entregables (1% semanal, máx 10%), incumplimiento fiscal (reemisión), servicios no conformes (pago pausado)."
+    },
+    {
+        "id": "guia_1",
+        "source": "Guía Proveedores Pagos v2",
+        "section": "Flujo de Proceso",
+        "content": "Etapas del proceso: 1. OC/Contrato, 2. Entrega, 3. Evidencia/Conformidad, 4. Emisión factura, 5. Registro CP, 6. Programación Tesorería, 7. Transferencia."
+    },
+    {
+        "id": "guia_2",
+        "source": "Guía Proveedores Pagos v2",
+        "section": "Requisitos Facturación",
+        "content": "Requisitos obligatorios: Razón social correcta, referencia explícita a OC/Contrato, descripción alineada al servicio, fechas de prestación, moneda acordada, datos bancarios (CLABE/IBAN) y evidencia de entrega."
+    },
+    {
+        "id": "guia_3",
+        "source": "Guía Proveedores Pagos v2",
+        "section": "Evidencias",
+        "content": "Evidencias aceptadas: Bienes (guía remisión, acuse almacén), Servicios (acta conformidad + entregable), Tecnología (correo activación), Mantenimiento (checklist + fotos), Marketing (entrega + aprobación correo)."
+    },
+    {
+        "id": "guia_4",
+        "source": "Guía Proveedores Pagos v2",
+        "section": "Cronograma",
+        "content": "Cronograma referencial: Día 0 (recepción), 1-3 días (validación fiscal), 2-5 días (aprobación área), Siguiente corrida (programación), 7-30 días (Pago según contrato)."
+    },
+    {
+        "id": "guia_5",
+        "source": "Guía Proveedores Pagos v2",
+        "section": "Rechazos",
+        "content": "Motivos de rechazo: Sin OC/Contrato, datos fiscales erróneos, monto diferente a OC, evidencia incompleta, servicio fuera de vigencia, falta de aprobación, datos bancarios inconsistentes."
+    }
+]

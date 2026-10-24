@@ -1,0 +1,140 @@
+{
+  "dotacion_total_septiembre": {
+    "sql": "SELECT dotacion_total, dotacion_en_proyectos, dotacion_central FROM v_gold_resumen_rrhh_mensual WHERE periodo='2026-09'",
+    "rows": [
+      [
+        22,
+        21,
+        1
+      ]
+    ]
+  },
+  "dotacion_por_proyecto_septiembre": {
+    "sql": "SELECT proyecto_nombre, dotacion FROM v_gold_personal_proyecto_mensual WHERE periodo='2026-09' ORDER BY dotacion DESC, proyecto_nombre",
+    "rows": [
+      [
+        "Ampliación Planta Sur",
+        7
+      ],
+      [
+        "Edificio Parque Central",
+        7
+      ],
+      [
+        "Centro Logístico Norte",
+        5
+      ],
+      [
+        "Obras Viales Oriente",
+        2
+      ],
+      [
+        "Administración central (sin proyecto)",
+        1
+      ]
+    ]
+  },
+  "costo_por_proyecto_septiembre": {
+    "sql": "SELECT proyecto_nombre, costo_laboral_clp FROM v_gold_personal_proyecto_mensual WHERE periodo='2026-09' ORDER BY costo_laboral_clp DESC",
+    "rows": [
+      [
+        "Ampliación Planta Sur",
+        10900000
+      ],
+      [
+        "Edificio Parque Central",
+        10650000
+      ],
+      [
+        "Centro Logístico Norte",
+        8800000
+      ],
+      [
+        "Obras Viales Oriente",
+        2350000
+      ],
+      [
+        "Administración central (sin proyecto)",
+        1400000
+      ]
+    ]
+  },
+  "dotacion_por_area_septiembre": {
+    "sql": "SELECT area, dotacion FROM v_gold_dotacion_area_mensual WHERE periodo='2026-09' ORDER BY dotacion DESC, area",
+    "rows": [
+      [
+        "Operaciones",
+        12
+      ],
+      [
+        "Administración",
+        3
+      ],
+      [
+        "Ingeniería",
+        3
+      ],
+      [
+        "Prevención de riesgos",
+        3
+      ],
+      [
+        "Recursos Humanos",
+        1
+      ]
+    ]
+  },
+  "evolucion_dotacion": {
+    "sql": "SELECT periodo, dotacion_total, costo_laboral_total_clp FROM v_gold_resumen_rrhh_mensual ORDER BY periodo",
+    "rows": [
+      [
+        "2026-08",
+        20,
+        31400000
+      ],
+      [
+        "2026-09",
+        22,
+        34100000
+      ],
+      [
+        "2026-10",
+        24,
+        37050000
+      ]
+    ]
+  },
+  "plazos_proyectos": {
+    "sql": "SELECT proyecto_nombre, duracion_planificada_dias, fecha_fin_planificada FROM v_gold_proyectos ORDER BY duracion_planificada_dias DESC",
+    "rows": [
+      [
+        "Edificio Parque Central",
+        365,
+        "2027-01-12"
+      ],
+      [
+        "Ampliación Planta Sur",
+        364,
+        "2027-02-28"
+      ],
+      [
+        "Obras Viales Oriente",
+        303,
+        "2027-05-31"
+      ],
+      [
+        "Centro Logístico Norte",
+        214,
+        "2026-12-15"
+      ]
+    ]
+  },
+  "costo_total_septiembre": {
+    "sql": "SELECT costo_laboral_total_clp FROM v_gold_resumen_rrhh_mensual WHERE periodo='2026-09'",
+    "rows": [
+      [
+        34100000
+      ]
+    ]
+  }
+}

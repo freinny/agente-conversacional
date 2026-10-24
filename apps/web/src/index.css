@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cinepolis-blue: #002d5d;
+  --color-cinepolis-gold: #c9a55c;
+  --color-premium-slate: #0a0e17;
+  --color-glass-dark: rgba(10, 14, 23, 0.7);
+  --color-accent-blue: #00d2ff;
+  --color-accent-purple: #9d50bb;
+}
+
+@layer base {
+  body {
+    @apply bg-premium-slate text-white antialiased font-sans selection:bg-accent-blue/30 overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-glass-dark backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl;
+  }
+
+  .glass-input {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-accent-blue/50 outline-none transition-all;
+  }
+
+  .premium-gradient {
+    background: linear-gradient(135deg, #00d2ff 0%, #9d50bb 100%);
+  }
+
+  .premium-border {
+    position: relative;
+  }
+
+  .premium-border::after {
+    content: '';
+    position: absolute;
+    inset: -1.5px;
+    background: linear-gradient(135deg, #00d2ff, #9d50bb);
+    z-index: -1;
+    border-radius: 2rem;
+    opacity: 0.5;
+  }
+}
+
+/* Base reset improvements */
+:root {
+  color-scheme: dark;
+}
+/* Premium Login Styles */
+.glass-card {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.microsoft-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.microsoft-login-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}

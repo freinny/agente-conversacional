@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SolutionManifest>
+    <UniqueName>AmaliaReconFixed</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="Amalia Recon Fixed" languagecode="1033" />
+      <LocalizedName description="Amalia Conciliación" languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Fixed reconciliation schema for Amalia" languagecode="1033" />
+    </Descriptions>
+    <Version>9.2.26014.139</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>default_publisher</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="Default Publisher" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Default publisher" languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true" />
+      <SupportingWebsiteUrl xsi:nil="true" />
+      <CustomizationPrefix>new</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>10000</CustomizationOptionValuePrefix>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="new_BankTransaction" />
+      <RootComponent type="1" schemaName="new_ErpCashLedger" />
+      <RootComponent type="1" schemaName="new_BankReconMatch" />
+    </RootComponents>
+  </SolutionManifest>
+</ImportExportXml>

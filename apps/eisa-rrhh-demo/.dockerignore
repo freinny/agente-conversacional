@@ -1,0 +1,14 @@
+.git
+.env*
+**/node_modules
+**/dist
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+**/*.db
+**/*.pyc
+evidence
+tests
+README.md
+DESIGN.md
+backend/requirements-dev.lock

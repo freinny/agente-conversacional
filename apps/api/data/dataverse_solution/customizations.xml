@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Entities>
+    <Entity>
+      <Name LocalizedName="Transacción Bancaria" OriginalName="Bank Transaction">new_BankTransaction</Name>
+      <EntityInfo>
+        <entity Name="new_BankTransaction">
+          <attributes>
+            <attribute Name="new_banktransactionid">
+              <Type>primarykey</Type>
+            </attribute>
+            <attribute Name="new_txid">
+              <Type>nvarchar</Type>
+              <Length>200</Length>
+            </attribute>
+            <attribute Name="new_accountno">
+              <Type>nvarchar</Type>
+              <Length>100</Length>
+            </attribute>
+            <attribute Name="new_txdate">
+              <Type>nvarchar</Type>
+              <Length>100</Length>
+            </attribute>
+            <attribute Name="new_description">
+              <Type>nvarchar</Type>
+              <Length>1000</Length>
+            </attribute>
+            <attribute Name="new_amount">
+              <Type>money</Type>
+            </attribute>
+            <attribute Name="new_currency">
+              <Type>nvarchar</Type>
+              <Length>10</Length>
+            </attribute>
+            <attribute Name="new_direction">
+              <Type>nvarchar</Type>
+              <Length>20</Length>
+            </attribute>
+          </attributes>
+        </entity>
+      </EntityInfo>
+    </Entity>
+    <Entity>
+      <Name LocalizedName="Libro de Caja ERP" OriginalName="ERP Cash Ledger">new_ErpCashLedger</Name>
+      <EntityInfo>
+        <entity Name="new_ErpCashLedger">
+          <attributes>
+            <attribute Name="new_erpcashledgerid">
+              <Type>primarykey</Type>
+            </attribute>
+            <attribute Name="new_ledgerid">
+              <Type>nvarchar</Type>
+              <Length>200</Length>
+            </attribute>
+            <attribute Name="new_sourcesystem">
+              <Type>nvarchar</Type>
+              <Length>100</Length>
+            </attribute>
+            <attribute Name="new_docref">
+              <Type>nvarchar</Type>
+              <Length>200</Length>
+            </attribute>
+            <attribute Name="new_postingdate">
+              <Type>nvarchar</Type>
+              <Length>100</Length>
+            </attribute>
+            <attribute Name="new_description">
+              <Type>nvarchar</Type>
+              <Length>1000</Length>
+            </attribute>
+            <attribute Name="new_amount">
+              <Type>money</Type>
+            </attribute>
+            <attribute Name="new_currency">
+              <Type>nvarchar</Type>
+              <Length>10</Length>
+            </attribute>
+            <attribute Name="new_direction">
+              <Type>nvarchar</Type>
+              <Length>20</Length>
+            </attribute>
+          </attributes>
+        </entity>
+      </EntityInfo>
+    </Entity>
+    <Entity>
+      <Name LocalizedName="Conciliación Bancaria" OriginalName="Bank Recon Match">new_BankReconMatch</Name>
+      <EntityInfo>
+        <entity Name="new_BankReconMatch">
+          <attributes>
+            <attribute Name="new_bankreconmatchid">
+              <Type>primarykey</Type>
+            </attribute>
+            <attribute Name="new_matchid">
+              <Type>nvarchar</Type>
+              <Length>200</Length>
+            </attribute>
+            <attribute Name="new_matchstatus">
+              <Type>nvarchar</Type>
+              <Length>100</Length>
+            </attribute>
+            <attribute Name="new_confidence">
+              <Type>decimal</Type>
+            </attribute>
+            <attribute Name="new_reason">
+              <Type>ntext</Type>
+            </attribute>
+            <attribute Name="new_bt_id">
+              <Type>lookup</Type>
+              <LookupType>new_banktransaction</LookupType>
+            </attribute>
+            <attribute Name="new_erp_id">
+              <Type>lookup</Type>
+              <LookupType>new_erpcashledger</LookupType>
+            </attribute>
+          </attributes>
+        </entity>
+      </EntityInfo>
+    </Entity>
+  </Entities>
+  <EntityRelationships>
+    <EntityRelationship Name="new_new_bankreconmatch_new_banktransaction">
+      <EntityRelationshipType>OneToMany</EntityRelationshipType>
+      <ReferencingEntityName>new_BankReconMatch</ReferencingEntityName>
+      <ReferencedEntityName>new_BankTransaction</ReferencedEntityName>
+    </EntityRelationship>
+    <EntityRelationship Name="new_new_bankreconmatch_new_erpcashledger">
+      <EntityRelationshipType>OneToMany</EntityRelationshipType>
+      <ReferencingEntityName>new_BankReconMatch</ReferencingEntityName>
+      <ReferencedEntityName>new_ErpCashLedger</ReferencedEntityName>
+    </EntityRelationship>
+  </EntityRelationships>
+</ImportExportXml>

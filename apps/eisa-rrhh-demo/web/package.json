@@ -1,0 +1,1 @@
+{"name":"eisa-rrhh-web","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"vite","build":"vite build","test":"node --test tests/*.test.js"},"dependencies":{"dompurify":"3.4.17","marked":"18.1.1"},"devDependencies":{"jsdom":"30.1.3","vite":"8.3.5"}}
