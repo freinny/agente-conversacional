@@ -1,0 +1,22 @@
+{
+  "name": "amalia-cinepolis-demo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:full": ". ~/.nvm/nvm.sh && nvm use 20 && concurrently \"npm run dev -w apps/api\" \"npm run dev -w apps/web\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.24",
+    "lucide-react": "^0.563.0",
+    "microsoft-cognitiveservices-speech-sdk": "^1.47.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18"
+  }
+}

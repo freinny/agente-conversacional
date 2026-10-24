@@ -1,0 +1,48 @@
+# Environment
+.env
+.env copy
+.env.local
+.env.*.local
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+.turbo/
+.next/
+out/
+.cache/
+
+# Debug and Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor Files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# Temporary Artifacts & Local Data
+provision_error.json
+test_output.txt
+entity_metadata.xml
+apps/api/src/rag/data/*.txt
+!apps/api/src/rag/data/.gitkeep
+
+# Testing
+coverage/
+.nyc_output/
